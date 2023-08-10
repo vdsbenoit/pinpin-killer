@@ -76,7 +76,9 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 }
 
-@media (prefers-color-scheme: dark) {
+/* Uncomment following line to re-enable dark theme */
+/* @media (prefers-color-scheme: dark) { */
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------
