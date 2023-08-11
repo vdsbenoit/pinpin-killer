@@ -11,7 +11,7 @@
         <img src="@/assets/img/logo.jpg" alt="Logo"/>
       </div>
       <h2>Niveau {{ store.level }} - Mission {{ store.currentMissionIndex + 1 }}</h2>
-      <ion-progress-bar :value="store.currentMissionIndex * 10"></ion-progress-bar>
+      <ion-progress-bar :value="store.currentMissionIndex / 10"></ion-progress-bar>
       <br>
       <ion-button expand="block"  @click="router.replace('/rules')" color="medium">
           Règles
