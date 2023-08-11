@@ -6,6 +6,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
+      <refresher-component></refresher-component>
       <div class="not-found">
         <strong class="capitalize">C'est page n'existe pas ou plus</strong>
         <p>Retour à <a  @click="router.go(-1)" >la page précédente</a></p>
@@ -16,6 +17,7 @@
 
 <script setup lang="ts">
 import { IonContent, IonPage, IonHeader, IonToolbar, IonTitle } from "@ionic/vue";
+import RefresherComponent from "@/components/RefresherComponent.vue";
 import { useRouter } from 'vue-router';
 const router = useRouter();
 

@@ -26,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import ('../views/RulesPage.vue'),
   },
   {
+    name: 'validation',
+    path: '/validation',
+    component: () => import ('../views/ValidationPage.vue'),
+  },
+  {
     path: '/tabs/',
     component: TabsPage,
     children: [
@@ -63,8 +68,6 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {
   const store = useStore();
-  console.log("salt", store.checkSalt())
-  console.log("username", store.username)
   if (to.name === "forbidden" || to.name === "404") return true;
   if (store.checkSalt()) {
     if (store.newbie && to.name != "onboarding") return { name: 'onboarding'};

@@ -60,7 +60,7 @@ const conflictHandler = async (pass: string) => {
     store.currentMissionIndex = userData.currentMissionIndex|| 0
     store.winner = userData.winner || false
     store.newbie = false;
-    router.push("/tabs")
+    router.push("/rules")
     toastPopup("Profil chargé")
   }
   else {
@@ -83,7 +83,7 @@ const zabart = async () => {
     newUser(store.username, store.poolMissions, store.finalMissions, store.qrSalt)
       .then(() => {
       store.newbie = false;
-        router.push("/tabs") 
+        router.push("/rules") 
       })
       .catch((error) => {
         console.error(error)
@@ -110,7 +110,7 @@ const zabart = async () => {
   margin-top: 10px;
 }
 .logo img {
-  max-width: 100%;
+  max-width: 80%;
   max-height: 100%;
 }
 .container{

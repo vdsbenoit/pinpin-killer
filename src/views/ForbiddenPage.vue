@@ -6,6 +6,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
+      <refresher-component></refresher-component>
       <div class="not-found">
         <strong class="capitalize">Tu n'as pas accès à l'app</strong>
         <p>Pour accéder à l'app, tu dois utiliser le code QR</p>
@@ -16,6 +17,7 @@
 
 <script setup lang="ts">
 import { IonContent, IonPage, IonHeader, IonToolbar, IonTitle } from "@ionic/vue";
+import RefresherComponent from "@/components/RefresherComponent.vue";
 </script>
 
 <style scoped>
