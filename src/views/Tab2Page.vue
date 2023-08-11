@@ -16,7 +16,8 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-button expand="block"  @click="upload" color="success" :disabled="isUploading">
+      <ion-progress-bar v-if="isUploading" :value="uploadProgress"></ion-progress-bar>
+      <ion-button expand="block"  @click="upload" color="success" :disabled="isUploading" class="ion-text-center ion-align-items-center">
         <ion-spinner v-if="isUploading"></ion-spinner>
         <span v-else>Uploader les PVs</span>
       </ion-button>
@@ -25,14 +26,14 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg, IonButton, IonSpinner } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonImg, IonButton, IonSpinner, IonProgressBar } from '@ionic/vue';
 import RefresherComponent from "@/components/RefresherComponent.vue";
 import { useStore } from '@/services/store';
 import { onMounted, ref, watch } from 'vue';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { UserPhoto } from '@/services/photoGallery';
 import { confirmPopup, toastPopup } from '@/services/popup';
-import { uploadPhotos } from '@/services/firebase';
+import { updateUserData, uploadPhotos } from '@/services/firebase';
 
 // composables
 
@@ -41,6 +42,7 @@ const store = useStore();
 // reactive data
 const photos = ref<UserPhoto[]>([])
 const isUploading = ref(false)
+const uploadProgress = ref(0)
 
 // methods
 
@@ -56,9 +58,10 @@ const downloadImage = (photo: UserPhoto) => {
   }) 
 }
 
-const upload = () => {
+const upload = async () => {
   isUploading.value = true
-  uploadPhotos(store.photos)
+  await updateUserData(store.username, store.level, store.currentMissionIndex, store.winner, store.qrSalt)
+  uploadPhotos(store.photos, uploadProgress)
     .then(() => {
       toastPopup("Les photos ont bien été uploadées")
       isUploading.value = false

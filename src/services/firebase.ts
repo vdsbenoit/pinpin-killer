@@ -2,9 +2,10 @@ import { firebaseConfig } from './firebaseConfig';
 import { initializeApp } from "firebase/app";
 import { getStorage, listAll, ref, uploadBytes, uploadString } from "firebase/storage";
 import "firebase/firestore";
-import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, orderBy, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { UserPhoto } from './photoGallery';
 import { Directory, Filesystem } from '@capacitor/filesystem';
+import { Ref } from 'vue';
 
 
 const app = initializeApp(firebaseConfig);
@@ -31,6 +32,16 @@ const newUser = async (username: string, poolMissions: string[], finalMissions: 
   });
 }
 
+const updateUserData =async (username: string, level: number, currentMissionIndex: number, winner: boolean, salt: string) => {
+  return await updateDoc(doc(db, "users", username), {
+    username,
+    level,
+    currentMissionIndex,
+    winner,
+    salt    
+  })
+}
+
 const getUser = async (username: string) => {
   const docRef = doc(db, "users", username);
   const docSnap = await getDoc(docRef);
@@ -52,11 +63,13 @@ const getUser = async (username: string) => {
   }
 }
 
-const uploadPhotos = async (photos: UserPhoto[]) => {
+const uploadPhotos = async (photos: UserPhoto[], progress: Ref<Number>) => {
   const storageRef = ref(storage, 'contraventions');
   // Find all the prefixes and items.
   const response = await listAll(storageRef)
   const serverFiles = response.items.map(item => item.name);
+  progress.value = 0
+  const progressStep = 1 / photos.length
   photos.forEach(async (photo) => {
     if (!serverFiles.includes(photo.filepath)) {
       
@@ -67,14 +80,25 @@ const uploadPhotos = async (photos: UserPhoto[]) => {
       });
       console.log(file);
       uploadString(targetRef, file.data as string, 'base64').then((snapshot) => {
+        progress.value = +progress.value + progressStep 
         console.log(`${photo.filepath} uploaded`); 
       });
 
     }
-  })
-    
-
-  
+  })  
 }
 
-export { isUser, newUser, getUser, uploadPhotos };
+const getUsers = async (level: number) => {
+  const q = query(collection(db, "users"), where("level", "==", level), orderBy("currentMissionIndex", "desc"));
+
+  const querySnapshot = await getDocs(q);
+  const users: any[] = []
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    users.push(doc.data())
+    console.log(doc.id, " => ", doc.data());
+  });
+  return users 
+}
+
+export { isUser, newUser, updateUserData, getUser, uploadPhotos, getUsers };

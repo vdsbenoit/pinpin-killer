@@ -7,22 +7,34 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <refresher-component></refresher-component>
-      <div class="logo">
-        <img src="@/assets/img/logo.jpg" alt="Logo"/>
+      <div v-if="store.winner">
+        <div class="logo">
+          <img src="@/assets/img/parking-management.jpg" alt="Logo"/>
+        </div>
+        <h2>
+          🏆 🏆 🏆 <br><br>
+          Bravo ! <br><br>
+          Tu es le roi / la reine des batards ! 
+        </h2>
       </div>
-      <h2>Niveau {{ store.level }} - Mission {{ store.currentMissionIndex + 1 }}</h2>
-      <ion-progress-bar :value="store.currentMissionIndex / 10"></ion-progress-bar>
-      <br>
-      <ion-button expand="block"  @click="router.replace('/rules')" color="medium">
-          Règles
-      </ion-button>
-      <ion-button expand="block"  @click="displayMission" color="warning">
-          Voir mission en cours
-      </ion-button>
-      <ion-button expand="block"  @click="finishMission" color="success">
-          Enregister PV
-      </ion-button>
-      
+      <div v-else>
+        <div class="logo">
+          <img src="@/assets/img/logo.jpg" alt="Logo"/>
+        </div>
+        <h2 v-if="store.level == 1">Qualifications - Mission {{ store.currentMissionIndex + 1 }}</h2>
+        <h2 v-if="store.level == 2">Finale - Mission {{ store.currentMissionIndex + 1 }}</h2>
+        <ion-progress-bar :value="store.currentMissionIndex / 10" :color="store.level < 2 ? 'primary' : 'danger'"></ion-progress-bar>
+        <br>
+        <ion-button expand="block"  @click="router.replace('/rules')" color="medium">
+            Règles
+        </ion-button>
+        <ion-button expand="block"  @click="displayMission" color="warning">
+            Voir mission en cours
+        </ion-button>
+        <ion-button expand="block"  @click="finishMission" color="success">
+            Enregister PV
+        </ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -96,5 +108,10 @@ ion-button {
   margin-left: 15px;
   margin-right: 15px;
 
+}
+/* mirror video preview */
+video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 </style>

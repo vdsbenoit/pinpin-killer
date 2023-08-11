@@ -11,7 +11,7 @@
         <img src="@/assets/img/logo.jpg" alt="Logo"/>
       </div>
       <div class="container ion-padding">
-        <h2>Bienvenue dans le club des fdp !</h2>
+        <h2>Bienvenue dans le club des batards !</h2>
         <br>
 
         <form v-on:submit.prevent="zabart">

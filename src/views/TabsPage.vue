@@ -12,17 +12,20 @@
           <ion-icon aria-hidden="true" :icon="grid" />
           <ion-label>PVs</ion-label>
         </ion-tab-button>
-
-        <!-- <ion-tab-button tab="tab3" href="/tabs/tab3">
+        
+        <ion-tab-button v-if="store.username == 'Lapin'" tab="tab3" href="/tabs/tab3">
           <ion-icon aria-hidden="true" :icon="podium" />
           <ion-label>Classement</ion-label>
-        </ion-tab-button> -->
+        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
 </template>
 
 <script setup lang="ts">
+import { useStore } from '@/services/store';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { grid, podium, checkbox } from 'ionicons/icons';
+
+const store = useStore()
 </script>

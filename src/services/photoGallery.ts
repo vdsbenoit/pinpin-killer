@@ -1,5 +1,5 @@
 import { ref, onMounted, watch, reactive } from 'vue';
-import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Camera, CameraDirection, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Preferences } from '@capacitor/preferences';
 
@@ -29,6 +29,7 @@ export const usePhotoGallery = () => {
       source: CameraSource.Camera,
       quality: 100,
       allowEditing: true,
+      direction: CameraDirection.Front,
     });
     const fileName = username + missionId + Date.now() + '.jpeg';
     const savedFileImage = {
