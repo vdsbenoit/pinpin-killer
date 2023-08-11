@@ -16,7 +16,7 @@
           </h3>
           <p>
             La photo doit être un selfie de ta victime et toi.<br>
-            Si la photo ne valide pas ton PV, tu seras discalifié.
+            Si la photo n'est pas homologuée, tu seras disqualifié.e par la direction.
             Il ne sera pas possible de retourner en arrière une fois la photo validée.
           </p>
           <ion-button expand="block" color="medium" @click="router.replace({name: 'tab1'})">

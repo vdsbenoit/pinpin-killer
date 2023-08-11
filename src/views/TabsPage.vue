@@ -13,7 +13,7 @@
           <ion-label>PVs</ion-label>
         </ion-tab-button>
         
-        <ion-tab-button v-if="store.username == 'Lapin'" tab="tab3" href="/tabs/tab3">
+        <ion-tab-button v-if="store.username === 'Lapin'" tab="tab3" href="/tabs/tab3">
           <ion-icon aria-hidden="true" :icon="podium" />
           <ion-label>Classement</ion-label>
         </ion-tab-button>
