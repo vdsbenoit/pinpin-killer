@@ -56,6 +56,7 @@ const validation = async () => {
   const savedFileImage = await savePicture(lastPhoto);
   store.photos = [savedFileImage, ...store.photos];
   toastPopup("La contravention a été validée");
+  store.nextMission()
   router.replace('/tabs')
 }
 

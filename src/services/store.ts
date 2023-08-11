@@ -40,7 +40,7 @@ export const useStore = defineStore(
       winner.value = true; 
     }
 
-    const getCurrentMisson = () => {
+    const getCurrentMission = () => {
       try {
         switch (level.value) {
           case 1:
@@ -57,11 +57,7 @@ export const useStore = defineStore(
       
     }
 
-    const isWinner = () => {
-      return winner.value
-    }
-
-    return { qrSalt, newbie, username, level, currentMissionIndex, poolMissions, finalMissions, winner, photos, checkSalt, initMissions, getCurrentMisson, isWinner}
+    return { qrSalt, newbie, username, level, currentMissionIndex, poolMissions, finalMissions, winner, photos, checkSalt, initMissions, getCurrentMission, nextMission}
   },
   { persist: true }
 )

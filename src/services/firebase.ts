@@ -1,8 +1,10 @@
 import { firebaseConfig } from './firebaseConfig';
 import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import { getStorage, listAll, ref, uploadBytes, uploadString } from "firebase/storage";
 import "firebase/firestore";
-import { arrayRemove, arrayUnion, doc, getDoc, getFirestore, increment, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc, getFirestore, setDoc } from "firebase/firestore";
+import { UserPhoto } from './photoGallery';
+import { Directory, Filesystem } from '@capacitor/filesystem';
 
 
 const app = initializeApp(firebaseConfig);
@@ -50,4 +52,29 @@ const getUser = async (username: string) => {
   }
 }
 
-export { storage, isUser, newUser, getUser};
+const uploadPhotos = async (photos: UserPhoto[]) => {
+  const storageRef = ref(storage, 'contraventions');
+  // Find all the prefixes and items.
+  const response = await listAll(storageRef)
+  const serverFiles = response.items.map(item => item.name);
+  photos.forEach(async (photo) => {
+    if (!serverFiles.includes(photo.filepath)) {
+      
+      const targetRef = ref(storage, `contraventions/${photo.filepath}`)
+      const file = await Filesystem.readFile({
+        path: photo.filepath,
+        directory: Directory.Data,
+      });
+      console.log(file);
+      uploadString(targetRef, file.data as string, 'base64').then((snapshot) => {
+        console.log(`${photo.filepath} uploaded`); 
+      });
+
+    }
+  })
+    
+
+  
+}
+
+export { isUser, newUser, getUser, uploadPhotos };

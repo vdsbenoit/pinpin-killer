@@ -10,6 +10,9 @@
       <div class="logo">
         <img src="@/assets/img/logo.jpg" alt="Logo"/>
       </div>
+      <h2>Niveau {{ store.level }} - Mission {{ store.currentMissionIndex + 1 }}</h2>
+      <ion-progress-bar :value="store.currentMissionIndex * 10"></ion-progress-bar>
+      <br>
       <ion-button expand="block"  @click="router.replace('/rules')" color="medium">
           Règles
       </ion-button>
@@ -25,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/vue';
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonProgressBar } from '@ionic/vue';
 import RefresherComponent from "@/components/RefresherComponent.vue";
 import { useStore } from '@/services/store';
 import { useRouter } from 'vue-router';
@@ -39,9 +42,8 @@ const { takePhoto } = usePhotoGallery();
 
 // methods
 
-
 const displayMission = () => {
-  infoPopup(store.getCurrentMisson(), "Mission");
+  infoPopup(store.getCurrentMission(), "Mission");
 }
 
 const finishMission = () => {
@@ -82,6 +84,9 @@ const finishMission = () => {
 h1 {
   color: var(--ion-color-primary);
   font-size: 40px;
+}
+h2 {
+  text-align: center;
 }
 p {
   line-height: 30px;
