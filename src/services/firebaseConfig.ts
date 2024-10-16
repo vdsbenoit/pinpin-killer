@@ -1,5 +1,5 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyDWmfm0OeEFATcY8DLUOzUHbU0OXKbZX5Q",
+    apiKey: "",
     authDomain: "pinpin-killer.firebaseapp.com",
     projectId: "pinpin-killer",
     storageBucket: "pinpin-killer.appspot.com",

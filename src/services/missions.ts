@@ -14,7 +14,7 @@ const poolMissions = [
   ["Ta victime doit jouer au beer pong avec ou contre toi", "Ta victime doit jouer aux dés avec toi", "Ta victime doit jouer aux molkky avec ou contre toi"],
   ["Ta victime doit prendre une photo au photomaton avec toi"],
   ["Ta victime doit rester en équilibre sur un pied pendant 10 secondes"],
-  ["GAGNE à pierre papier ciseaux contre ta victime"]
+  ["GAGNE à pierre papier ciseaux contre ta victime"],
 ]
 
 const finalMissions: any[] = [
@@ -27,45 +27,45 @@ const finalMissions: any[] = [
   ["Echange de déguisement avec ta victime (ou propose lui un déguisement si elle n'en porte pas encore)"],
   ["Chante une chanson avec ta victime pendant 10 secondes"],
   ["Tu dois passer en dessous de ta victime"],
-  ["Ta victime doit imiter le bruit d'une sirène (police, ambulance, etc)"]
+  ["Ta victime doit imiter le bruit d'une sirène (police, ambulance, etc)"],
 ]
 
 export const getRandomPoolMissions = () => {
-  const missionsCopy = JSON.parse(JSON.stringify(poolMissions)); // Deep copy the array
-  const selectedMissions = [];
+  const missionsCopy = JSON.parse(JSON.stringify(poolMissions)) // Deep copy the array
+  const selectedMissions = []
 
   while (selectedMissions.length < 10 && missionsCopy.length > 0) {
-    const randomIndex = Math.floor(Math.random() * missionsCopy.length);
-    const mission = missionsCopy[randomIndex];
+    const randomIndex = Math.floor(Math.random() * missionsCopy.length)
+    const mission = missionsCopy[randomIndex]
 
     if (Array.isArray(mission)) {
-      const subMissionIndex = Math.floor(Math.random() * mission.length);
-      selectedMissions.push(mission[subMissionIndex]);
+      const subMissionIndex = Math.floor(Math.random() * mission.length)
+      selectedMissions.push(mission[subMissionIndex])
     } else {
-      selectedMissions.push(mission);
+      selectedMissions.push(mission)
     }
 
-    missionsCopy.splice(randomIndex, 1); // Remove selected mission
+    missionsCopy.splice(randomIndex, 1) // Remove selected mission
   }
 
-  return selectedMissions;
-};
+  return selectedMissions
+}
 
 export const getFinalMissions = () => {
-  const selectedMissions = [];
-  let index = 0;
+  const selectedMissions = []
+  let index = 0
 
   while (selectedMissions.length < 10) {
-    const mission = finalMissions[index];
+    const mission = finalMissions[index]
 
     if (Array.isArray(mission)) {
-      const subMissionIndex = Math.floor(Math.random() * mission.length);
-      selectedMissions.push(mission[subMissionIndex]);
+      const subMissionIndex = Math.floor(Math.random() * mission.length)
+      selectedMissions.push(mission[subMissionIndex])
     } else {
-      selectedMissions.push(mission);
+      selectedMissions.push(mission)
     }
     index++
   }
 
-  return selectedMissions;
-};
+  return selectedMissions
+}

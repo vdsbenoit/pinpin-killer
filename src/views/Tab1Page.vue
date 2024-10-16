@@ -14,7 +14,7 @@
         <h2>
           🏆 🏆 🏆 <br><br>
           Bravo ! <br><br>
-          Tu es le roi / la reine des batards ! 
+          Tu es le roi / la reine des controleurs ! 
         </h2>
       </div>
       <div v-else>

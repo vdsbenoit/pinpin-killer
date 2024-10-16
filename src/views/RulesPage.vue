@@ -10,16 +10,16 @@
       <div class="container ion-padding">
           <h4>But</h4>
           <p>
-            Ton objectif est de devenir le roi / la reine des batards on mettant un maximum de contraventions autour de toi.
+            Ton objectif est de devenir le roi / la reine des controleurs on mettant un maximum de contraventions autour de toi.
             Pour mettre une contraventions, tu dois réaliser des missions. 
             Une mission consiste à faire faire quelque chose à quelqu'un, peu importe la victime. <br>
             Tu recevras 10 premières missions aléatoires pour te qualifier en finale.
             Une fois en finale, tu devras réussir 10 missions plus complexes.
-            Si tu arrives au bout de ces 20 missions, tu seras nommé roi / reine des batards ! 🎉
+            Si tu arrives au bout de ces 20 missions, tu seras nommé roi / reine des controleurs ! 🎉
           </p>
           <h4>Règles</h4>
           <p>
-            1. Si la victime se rend compte que tu essaies de lui foutre un PV, tu bois un shot.<br>
+            1. Si la victime se rend compte que tu essaies de lui mettre un PV, tu bois un shot.<br>
             2. Si ta mission est un succès, la victime boit un shot. Prends un selfie avec la victime pour valider le PV. <br>
             3. Un shot peut être remplacé par un demi afond.<br>
             4. L'agent doit avoir incité la victime à faire la mission.
@@ -31,7 +31,7 @@
           </p>
           <h4>Remarques</h4>
           <p>
-            Essie de ne pas fermer cette page et assure toi que ton navigateur ne supprime pas le cache. Sinon tu risques de perdre ta progression.<br>
+            Essaie de ne pas fermer cette page et assure toi que ton navigateur ne supprime pas le cache. Sinon tu risques de perdre ta progression.<br>
             De temps en temps, va dans l'onglet "PVs" et upload ta progression. 
             Ca mettra à jour le classement et enverra tes PVs à maitre Lapin pour qu'il les ajoute à l'album souvenir. 
             Il faut un accès à internet pour faire cette opération. Il faudra peut-être que tu ailles sur la terrasse.
